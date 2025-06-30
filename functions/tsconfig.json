@@ -19,7 +19,5 @@
     "noUncheckedIndexedAccess": true,
   },
   "compileOnSave": true,
-  "include": [
-    "src"
-, "shared"  ]
+  "include": ["src", "shared"  ]
 }

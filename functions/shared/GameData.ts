@@ -7,7 +7,6 @@ export class GameData {
       public players: { min: number; max: number },
       public expansions: string[],
       public type: string,
-      public baseGame?: string,
       public standalone?: boolean,
     ) {
       this.id = id;
@@ -17,7 +16,6 @@ export class GameData {
       this.players = players;
       this.expansions = expansions;
       this.type = type;
-      this.baseGame = baseGame;
       this.standalone = standalone;
     }
   }
@@ -32,7 +30,6 @@ export class GameData {
         players: gameData.players,
         expansions: gameData.expansions,
         type: gameData.type,
-        baseGame: gameData.baseGame,
         standalone: gameData.standalone,
       };
     },
