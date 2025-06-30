@@ -9,8 +9,8 @@ const getCollection = memoize(() =>
 export async function getGames() {
   try {
     const result = await getCollection().get();
-    return result.docs.map((snap) => snap.data());
+    result.docs.map((snap) => snap.data());
   } catch (error) {
-    throw new HttpError('Error while fetching games', 500);
+    throw new HttpError(500, 'Error while fetching games');
   }
 }

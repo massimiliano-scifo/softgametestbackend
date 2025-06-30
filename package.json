@@ -1,0 +1,36 @@
+{
+    "name": "Softgames Test",
+    "type": "module",
+    "workspaces": [
+      "admin",
+      "functions"
+    ],
+    "scripts": {
+      "buildImage": "",
+      "seed": "",
+      "start": ""
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "@vitejs/plugin-react": "^4.3.4",
+        "@vitest/coverage-istanbul": "^3.0.7",
+        "rimraf": "^6.0.1",
+        "typescript": "^5.8.2",
+        "vite": "^6.2.0",
+        "vitest": "^3.0.7",
+        "@types/morgan": "^1.9.9",
+        "@typescript-eslint/eslint-plugin": "^5.12.0",
+        "@typescript-eslint/parser": "^5.12.0",
+        "eslint": "^8.9.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-plugin-import": "^2.25.4",
+        "firebase-functions-test": "^3.1.0"
+    },
+    "engines": {
+      "node": ">=20",
+      "npm": ">=10"
+    },
+    "license": "MIT",
+    "private": true
+  }

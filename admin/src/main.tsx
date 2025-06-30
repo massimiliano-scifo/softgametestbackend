@@ -1,22 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Layout, Table } from 'antd';
-
-const root = document.getElementById('root');
-if (!root) {
-  throw new Error('No root element found to mount the app');
-}
-
+import data from '../../games.json';
+import { IGameData } from './interfaces/IGameData';
 const { Header, Content } = Layout;
 
-import data from '../../games.json';
-const dataSource = data.map((item) => ({ ...item, key: item.id }));
+const dataSource = data.map(item  => { return {
+  id: item.id,
+  name: item.name,
+  releaseYear: item.releaseYear,
+  publisher: item.publisher,
+  players: item.players,
+  expansions: item.expansions,
+  type: item.type,
+  baseGame: item.baseGame,
+  standalone: item.standalone
+} as IGameData});
 
 const tableColumns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },
   { title: 'Year', dataIndex: 'releaseYear', key: 'releaseYear' },
   { title: 'Publisher', dataIndex: 'publisher', key: 'publisher' },
 ]
+
+const root = document.getElementById('root');
+if (!root) {
+  throw new Error('No root element found to mount the app');
+}
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
