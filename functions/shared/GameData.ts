@@ -33,7 +33,7 @@ export class GameData {
         standalone: gameData.standalone,
       };
     },
-    fromFirestore: (data: any) => {
+    fromObject: (data: any) => {
       return new GameData(
         data.id,
         data.name,
