@@ -42,6 +42,7 @@ export class GameData {
         data.players,
         data.expansions,
         data.type,
+        data.standalone
       );
     },
   };

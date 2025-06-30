@@ -15,10 +15,18 @@ gamesRouter.post(
 
 gamesRouter.put(
   '/:id',
-  wrapAsync((req) => updateGame(req.body)),
+  wrapAsync((req) => {
+    const id = req.params.id;
+    if (!id) throw new Error('Missing game id');
+    return updateGame(req.body, id?.toString());
+  }),
 );
 
 gamesRouter.delete(
   '/:id',
-  wrapAsync((req) => deleteGame(req.body)),
+  wrapAsync((req) => {
+    const id = req.params.id;
+    if (!id) throw new Error('Missing game id');
+    return deleteGame(id?.toString());
+  }),
 );

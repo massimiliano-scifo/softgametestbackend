@@ -3,4 +3,8 @@ import { getFirestore as createFirestore } from 'firebase-admin/firestore';
 import { getApp } from '../firebase-admin/getApp.js';
 import { memoize } from '../../utils/memoize.js';
 
-export const getFirestore = memoize((): Firestore => createFirestore(getApp()));
+export const getFirestore = memoize((): Firestore => {
+    const firestore = createFirestore(getApp());
+    firestore.settings({ignoreUndefinedProperties: true});
+    return firestore;
+});
