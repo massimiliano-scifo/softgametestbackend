@@ -1,21 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Layout, Table } from 'antd';
-import data from '../../games.json';
-import { GameData } from './classes/GameData';
+import { GameData, gameDataConverter } from 'functions_shared';
+import { HttpService } from './services/HttpService';
 const { Header, Content } = Layout;
 
-const dataSource = data.map(item => { return {
-  id: item.id,
-  name: item.name,
-  releaseYear: item.releaseYear,
-  publisher: item.publisher,
-  players: item.players,
-  expansions: item.expansions,
-  type: item.type,
-  baseGame: item.baseGame,
-  standalone: item.standalone
-} as GameData});
+// I would prefer to use dependency injection here
+const service = new HttpService();
+const dataSource: GameData[] = [];
+for (const item of await service.getGames()) {
+  dataSource.push(gameDataConverter.fromFirestore(item));
+}
 
 const tableColumns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },

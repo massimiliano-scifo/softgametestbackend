@@ -8,6 +8,7 @@ console.log('Injected environment:', env);
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
+    target: 'esnext',
     minify: false,
   },
   plugins: [react()],

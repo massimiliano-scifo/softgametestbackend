@@ -9,7 +9,6 @@ firebase-debug.*.log*
 
 lib/
 dist/
-.package-lock.json
 
 # Firebase cache
 .firebase/
@@ -71,3 +70,4 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+package-lock.json
