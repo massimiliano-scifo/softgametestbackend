@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Layout, Table } from 'antd';
 import data from '../../games.json';
-import { IGameData } from './interfaces/IGameData';
+import { GameData } from './classes/GameData';
 const { Header, Content } = Layout;
 
-const dataSource = data.map(item  => { return {
+const dataSource = data.map(item => { return {
   id: item.id,
   name: item.name,
   releaseYear: item.releaseYear,
@@ -15,7 +15,7 @@ const dataSource = data.map(item  => { return {
   type: item.type,
   baseGame: item.baseGame,
   standalone: item.standalone
-} as IGameData});
+} as GameData});
 
 const tableColumns = [
   { title: 'Name', dataIndex: 'name', key: 'name' },

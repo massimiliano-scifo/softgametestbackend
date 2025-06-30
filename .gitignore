@@ -9,6 +9,7 @@ firebase-debug.*.log*
 
 lib/
 dist/
+.package-lock.json
 
 # Firebase cache
 .firebase/
