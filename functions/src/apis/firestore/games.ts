@@ -18,8 +18,11 @@ export async function getGames() {
 
 export async function createGame(gameData: GameData) {
   try {
-    const result = await getCollection().add(gameDataConverter.toFirestore(gameData));
-    return result;
+    // Max: I don't like this way of giving the id, but is to keep it consistent with the data from games.json
+    const query = await getCollection().count().get();
+    gameData.id = (query.data().count + 1).toString();
+    await getCollection().doc(gameData.id).set(gameDataConverter.toFirestore(gameData));
+    return gameData.id;
   } catch (error) {
     throw new HttpError(500, 'Error while creating game');
   }

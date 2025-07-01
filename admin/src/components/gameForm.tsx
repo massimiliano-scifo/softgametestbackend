@@ -55,9 +55,8 @@ export const GameForm: React.FC<GameFormProps> = ({ initialValues, onCancel, onS
       <Form.Item
         label="Max Players"
         name={['players', 'max']}
-        rules={[{ required: true, message: 'Please input the max players!' }]}
       >
-        <InputNumber style={{ width: '100%' }} min={1} max={10} />
+        <InputNumber style={{ width: '100%' }} min={1} />
       </Form.Item>
       <Form.Item
         label="Expansions"
