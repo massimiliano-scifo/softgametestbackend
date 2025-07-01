@@ -1,8 +1,6 @@
-import { GameData, gameDataConverter } from "functions_shared";
-import { HttpService } from "../services/HttpService";
+import { GameData } from "functions_shared";
 import { Button, Checkbox, Table } from "antd";
 import { EditButton } from "./editButton";
-import { useEffect, useState } from "react";
 
 type TableProps = {
     data: GameData[];

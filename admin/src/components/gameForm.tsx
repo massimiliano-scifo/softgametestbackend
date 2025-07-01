@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Input, InputNumber, Button, Checkbox } from 'antd';
 import { GameData } from 'functions_shared';
-import { HttpService } from '../services/HttpService';
 
 type GameFormProps = {
   initialValues?: GameData;
