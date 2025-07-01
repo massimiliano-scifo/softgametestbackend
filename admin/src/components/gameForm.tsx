@@ -5,12 +5,11 @@ import { HttpService } from '../services/HttpService';
 
 type GameFormProps = {
   initialValues?: GameData;
-  newItem: boolean;
   onCancel: () => void;
   onSubmit: (game: GameData) => void;
 };
 
-export const GameForm: React.FC<GameFormProps> = ({ initialValues, newItem, onCancel, onSubmit}) => {
+export const GameForm: React.FC<GameFormProps> = ({ initialValues, onCancel, onSubmit}) => {
   const [form] = Form.useForm();
 
   const handleOk = () => {

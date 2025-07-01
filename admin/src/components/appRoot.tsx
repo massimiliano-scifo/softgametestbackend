@@ -35,7 +35,7 @@ const appRoot: React.FC = () => {
         updatedGame = game;
         setTableData(prev => prev.map(item => (item.id === updatedGame.id ? updatedGame : item)));
       }
-      
+
       setModalVisible(false);
       setModalContent(undefined);
     };
@@ -69,7 +69,6 @@ const appRoot: React.FC = () => {
           visible={modalVisible}
           onClose={() => { setModalVisible(false); }}
           content={modalContent}
-          newItem={newItem}
           onSubmit={handleModalSubmit}
         />
         )}
