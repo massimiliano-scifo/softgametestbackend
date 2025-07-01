@@ -21,7 +21,6 @@ export async function createGame(gameData: GameData) {
     const result = await getCollection().add(gameDataConverter.toFirestore(gameData));
     return result;
   } catch (error) {
-    console.log(error);
     throw new HttpError(500, 'Error while creating game');
   }
 }

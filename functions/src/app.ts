@@ -13,8 +13,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use((_req, res, next) => {
-  console.log(res);
+app.use((_req, _res, next) => {
   next(new HttpError(404, 'Path not found'));
 });
 
