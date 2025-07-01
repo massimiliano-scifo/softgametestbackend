@@ -5,31 +5,12 @@ import { EditButton } from "./editButton";
 import { useEffect, useState } from "react";
 
 type TableProps = {
+    data: GameData[];
     onOpenModal: (record: GameData) => void;
+    onDelete: (id: string) => void;
 };
 
-export const CustomTable: React.FC<TableProps> = ({ onOpenModal }) => {
-    const dataSource: GameData[] = [];
-    const [data, setData] = useState<GameData[]>([]);
-    const httpService = new HttpService();
-    
-    const handleDelete = async (id: string) => {
-        await httpService.deleteGame(id);
-        setData(data.filter(item => item.id !== id));
-    }
-
-    useEffect(() => {
-    async function getToken() {
-      const games = await httpService.getGames();
-      const data = games;
-      for (const item of games) {
-        dataSource.push(gameDataConverter.fromObject(item));
-      }
-      setData(data);
-    }
-    getToken();
-    }, []);
-    
+export const CustomTable: React.FC<TableProps> = ({ data, onOpenModal, onDelete }) => {
     const tableColumns = [
         { title: 'ID', dataIndex: 'id', key: 'id' },
         { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -58,7 +39,7 @@ export const CustomTable: React.FC<TableProps> = ({ onOpenModal }) => {
                 type="default"
                 danger
                 size="small"
-                onClick={() => handleDelete(record.id)}
+                onClick={() => onDelete(record.id)}
               >
                 Delete
               </Button>

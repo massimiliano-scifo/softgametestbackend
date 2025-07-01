@@ -7,38 +7,24 @@ type GameFormProps = {
   initialValues?: GameData;
   newItem: boolean;
   onCancel: () => void;
+  onSubmit: (game: GameData) => void;
 };
 
-export const GameForm: React.FC<GameFormProps> = ({ initialValues, newItem, onCancel}) => {
+export const GameForm: React.FC<GameFormProps> = ({ initialValues, newItem, onCancel, onSubmit}) => {
   const [form] = Form.useForm();
-  
-  const handleSubmit = async (formData: GameData) => {
 
-    const gameData: GameData = {
-      name: formData.name,
-      releaseYear: formData.releaseYear,
-      publisher: formData.publisher,
-      id: initialValues?.id || "",
-      players: { min : formData.players.min, max : formData.players.max },
-      expansions: formData.expansions,
-      type: formData.type
-    }
-    const httpService = new HttpService();
-    console.log(newItem, gameData);
-    if (newItem) {
-      return await httpService.createGame(gameData);
-    } else {
-      return await httpService.updateGame(gameData);
-    }
-  }
-  
+  const handleOk = () => {
+    form.validateFields().then(values => {
+      onSubmit({ ...initialValues, ...values });
+    });
+  };
 
   return (
     <Form
       form={form}
       layout="vertical"
       initialValues={initialValues}
-      onFinish={handleSubmit}
+      onFinish={handleOk}
     >
       <Form.Item
         label="Name"

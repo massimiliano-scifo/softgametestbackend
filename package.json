@@ -5,9 +5,9 @@
         "functions"
     ],
     "scripts": {
-        "buildImage": "",
+        "buildImage": "docker build -t firebase-emulators .",
         "seedDB": "node ./scripts/seedDatabase.js",
-        "start": ""
+        "start": "docker run -p 5001:5001 -p 5003:5003 -p 5002:5002 -p 5000:5000 firebase-emulators"
     },
     "devDependencies": {
         "@types/morgan": "^1.9.9",

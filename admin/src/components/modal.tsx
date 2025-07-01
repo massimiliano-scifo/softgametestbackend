@@ -7,16 +7,18 @@ type SharedModalProps = {
   visible: boolean;
   newItem: boolean;
   onClose: () => void;
-  onSubmit: (values: GameData) => void;
+  onSubmit: (game: GameData) => void;
   content: GameData | undefined;
 };
 
-export const SharedModal: React.FC<SharedModalProps> = ({ visible, onClose, onSubmit, content, newItem }) => (
+export const SharedModal: React.FC<SharedModalProps> = ({ visible, onClose, content, newItem, onSubmit }) => (
+  
   <Modal open={visible} onCancel={onClose} footer={null} >
     <GameForm
       newItem={newItem}
       initialValues={content}
       onCancel={onClose}
+      onSubmit={onSubmit}
     />
   </Modal>
 );
